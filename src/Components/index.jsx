@@ -10,7 +10,7 @@ export default function SIPCalculator() {
   const [rateOfReturn, setValueRateOfReturn] = useState(10);
   const [rateOfInflation, setValueRateOfInflation] = useState(2);
   const [err,setError]= useState(false);
-  const [result, setResult] = useState();
+  const [result, setResult] = useState(true);
   
   function changeValues(name, val) {
     switch (name) {
@@ -29,33 +29,24 @@ export default function SIPCalculator() {
     }
   }
 
-  function handleSliderChange(event, newValue, field){
-    changeValues(field, newValue)
-  };
-
-  function handleInputChange(event, newValue, props){
+  function handleChange(event, newValue, props)  {
     let val = newValue
-
-
     if (Number(val) < props.min) {
       changeValues(props.field, props.min);
     }
-
     if (Number(val) > props.max) {
         changeValues(props.field, props.max);
     }
-    changeValues(props.field, event.target.value === '' ? '' : Number(event.target.value))
-  };
+    changeValues(props.field, event.target.value && Number(event.target.value))
+  }
 
-  function handleBlur(event, newValue, props){
-    let val = newValue 
-    console.log(props.min)
+  function handleBlur(event, props){
+    let val = event.target.value
     if (val <= 0) {
         alert("Please enter valid value greater than zero");
         changeValues(props.field, props.min);
         return;
     }
-
     if (Number(val) < props.min) {
         changeValues(props.field, props.min);
         return;
@@ -65,7 +56,6 @@ export default function SIPCalculator() {
         return;
     }
   };
-
 
   useEffect(() => {   
     axios.get('/api', {
@@ -86,9 +76,7 @@ export default function SIPCalculator() {
           }    
       }
     )
-    
   }, [monthlyInvestment, investmentPeriod, rateOfReturn, rateOfInflation]);
-
 
   return (
     <div className='rightMain'>
@@ -104,9 +92,8 @@ export default function SIPCalculator() {
           investmentPeriod ={investmentPeriod}
           rateOfReturn ={rateOfReturn}
           rateOfInflation ={rateOfInflation}
-          handleSliderChange={handleSliderChange}
-          handleInputChange={handleInputChange}
           handleBlur={handleBlur}
+          handleChange={handleChange}
           />
       </div>
 

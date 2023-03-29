@@ -129,7 +129,7 @@ svg, .graphFooter{
   overflow: visible;
 }
 
-@media  (max-width: 1048px){
+@media  (max-width: 1636px){
   .rightSideBox .rightMain .container .rightContainer{
     display: block;
     width: 48%;

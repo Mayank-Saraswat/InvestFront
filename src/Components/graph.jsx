@@ -1,7 +1,6 @@
 import React from "react";
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, Label } from "recharts";
 
-
 export default function Graph( props) {
 
     function toIndianRupees(sum){
@@ -21,8 +20,8 @@ export default function Graph( props) {
             <div className="graphFooter">
                 <ResponsiveContainer width={500} aspect={1.4}>
                     <LineChart data={props.result && props.result.graph} width={500} height={550} >
-                    <XAxis dataKey="year" stroke= "#000000" fontWeight="bold"><Label value="Investment Period(in Years)" position="bottom" offset={10}/></XAxis>
-                        <YAxis width={90} stroke= "#000000" fontWeight="bold"><Label value="SIP Growth(in Rupees)" position="left" offset={15} angle={270}
+                    <XAxis dataKey="year" stroke= "#000000" fontWeight="bold"><Label value="Investment Period(in Years)→ " position="bottom" offset={10}/></XAxis>
+                        <YAxis width={90} stroke= "#000000" fontWeight="bold"><Label value="SIP Growth(in Rupees)→" position="left" offset={15} angle={270}
                              style={{
                                 textAnchor: "middle",
                                 fontSize: "100%",

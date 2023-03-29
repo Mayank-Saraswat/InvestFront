@@ -76,8 +76,8 @@ const Input2 = styled(MuiInput)`width: 110px;`;
                                 type="number"
                                 value={props.value}
                                 size="small"
-                                onBlur={(event, newValue)=>props.handleBlur(event, newValue, props)}
-                                onChange={(event, newValue)=>props.handleInputChange(event, newValue, props)}
+                                onBlur={(event)=>props.handleBlur(event, props)}
+                                onChange={(event, newValue)=>props.handleChange(event, newValue, props)}
                                 inputProps={{
                                     step: 1,
                                     min: props.min,
@@ -94,7 +94,7 @@ const Input2 = styled(MuiInput)`width: 110px;`;
                             max={props.max}
                             step={1}
                             marks={props.field === 'monthlyInvestment' ? mark1 : mark2}
-                            onChange={(event, newValue)=>props.handleSliderChange(event, newValue, props.field)}
+                            onChange={(event, newValue)=>props.handleChange(event, newValue, props)}
                             valueLabelDisplay="auto"
                             value={props.value}
                         />

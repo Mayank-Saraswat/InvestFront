@@ -10,9 +10,7 @@ export default function Calculator(props){
             min={10000} 
             max={1000000}
             value={props.monthlyInvestment} 
-            handleSliderChange={props.handleSliderChange}
-            handleInputChange={props.handleInputChange}
-            handleBlur={props.handleBlur}
+            handleChange={props.handleChange}
         />
 
         <SliderPanel 
@@ -21,9 +19,8 @@ export default function Calculator(props){
             min={0} 
             max={30} 
             value={props.investmentPeriod}
-            handleSliderChange={props.handleSliderChange}
-            handleInputChange={props.handleInputChange}
             handleBlur={props.handleBlur}
+            handleChange={props.handleChange}
         />
 
         <SliderPanel 
@@ -32,9 +29,8 @@ export default function Calculator(props){
             min={0} 
             max={30}  
             value={props.rateOfReturn} 
-            handleSliderChange={props.handleSliderChange}
-            handleInputChange={props.handleInputChange}
             handleBlur={props.handleBlur}
+            handleChange={props.handleChange}
         />
         
         <SliderPanel 
@@ -43,9 +39,8 @@ export default function Calculator(props){
             min={0} 
             max={30} 
             value={props.rateOfInflation} 
-            handleSliderChange={props.handleSliderChange}
-            handleInputChange={props.handleInputChange}
             handleBlur={props.handleBlur}
+            handleChange={props.handleChange}
         />
     </div>
     )
