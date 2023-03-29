@@ -11,7 +11,7 @@ export default function Graph( props) {
         <>
             <div className='graphHeader'>
                 <p>After <span className="timeperiod"> <b>{props.result && props.result.investmentPeriod} years</b> </span>, you will have<br/>
-                    <span> <h2 className='totalamount'> <b> ₹ {props.result && toIndianRupees(props.result.sipGrowthResult)}</b></h2> </span>
+                    <span> <h2 className='totalamount'> <b> ₹ {props.result && toIndianRupees(props.result.sipGrowthResultFinal)}</b></h2> </span>
                     That's <span> <b className='potentialcapitalgain'>₹ {props.result && toIndianRupees(props.result && props.result.potentialCapitalGain)}</b> </span> as potential capital gains <br /> on your investment of
                     <span> <b className="monthlyinvestment">₹ {toIndianRupees(props.result && (props.result.totalMonthlyInvest))}</b>  </span>
                 </p>

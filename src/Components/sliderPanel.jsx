@@ -5,9 +5,7 @@ import Grid from '@mui/material/Grid';
 import MuiInput from '@mui/material/Input';
 import { styled } from '@mui/material/styles';
 
-export default function SliderPanel(props) {
-
-    const mark1 = [{
+const mark1 = [{
     value: 50000,
     label: '50000',
 },
@@ -34,8 +32,8 @@ export default function SliderPanel(props) {
 ];
 
 const mark2 = [{
-    value: 0,
-    label: '0',
+    value: 1,
+    label: '1',
 },
 {
     value: 6,
@@ -60,6 +58,8 @@ const mark2 = [{
 ];
 
 const Input2 = styled(MuiInput)`width: 110px;`;
+
+export default function SliderPanel(props) {
     return (
         <>
             <br />
@@ -76,25 +76,27 @@ const Input2 = styled(MuiInput)`width: 110px;`;
                                 type="number"
                                 value={props.value}
                                 size="small"
-                                onBlur={(event)=>props.handleBlur(event, props)}
-                                onChange={(event, newValue)=>props.handleChange(event, newValue, props)}
+                                onBlur={(event)=>props.handleChange(event, props)}
+                                onChange={(event)=>props.handleChange(event, props)}
                                 inputProps={{
-                                    step: 1,
+                                    step: props.steps,
                                     min: props.min,
                                     max: props.max
                                 }}
                             />
                         </Grid>
                     </div>
+                    
                     <br />
+                    {props.error && props.error && <div className="error">Invalid Input</div>}
                     <Grid className="slider">
                         <Slider
                             defaultValue={props.value}
                             min={props.min}
                             max={props.max}
-                            step={1}
+                            step={props.steps}
                             marks={props.field === 'monthlyInvestment' ? mark1 : mark2}
-                            onChange={(event, newValue)=>props.handleChange(event, newValue, props)}
+                            onChange={(event)=>props.handleChange(event, props)}
                             valueLabelDisplay="auto"
                             value={props.value}
                         />

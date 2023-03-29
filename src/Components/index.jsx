@@ -10,7 +10,7 @@ export default function SIPCalculator() {
   const [rateOfReturn, setValueRateOfReturn] = useState(10);
   const [rateOfInflation, setValueRateOfInflation] = useState(2);
   const [err,setError]= useState(false);
-  const [result, setResult] = useState(true);
+  const [result, setResult] = useState();
   
   function changeValues(name, val) {
     switch (name) {
@@ -26,36 +26,27 @@ export default function SIPCalculator() {
       case "rateOfInflation":
         setValueRateOfInflation(val);
         break;
+        default:
     }
   }
 
-  function handleChange(event, newValue, props)  {
-    let val = newValue
+  function handleChange(event, props)  {
+    let val = event.target.value;
     if (Number(val) < props.min) {
+      setError(true);
+      alert("Invalid Input");
       changeValues(props.field, props.min);
+      return;
     }
-    if (Number(val) > props.max) {
-        changeValues(props.field, props.max);
+    else if (Number(val) > props.max) {
+      setError(true);
+      alert("Invalid Input");
+      changeValues(props.field, props.max);
+    }else{
+      setError(false);
+      changeValues(props.field, event.target.value && Number(event.target.value))
     }
-    changeValues(props.field, event.target.value && Number(event.target.value))
   }
-
-  function handleBlur(event, props){
-    let val = event.target.value
-    if (val <= 0) {
-        alert("Please enter valid value greater than zero");
-        changeValues(props.field, props.min);
-        return;
-    }
-    if (Number(val) < props.min) {
-        changeValues(props.field, props.min);
-        return;
-    }
-    if (Number(val) > props.max) {
-        changeValues(props.field, props.max);
-        return;
-    }
-  };
 
   useEffect(() => {   
     axios.get('/api', {
@@ -72,7 +63,6 @@ export default function SIPCalculator() {
         }
         else{
           setResult(res.data && res.data.fresult);
-          setError(false);
           }    
       }
     )
@@ -92,8 +82,8 @@ export default function SIPCalculator() {
           investmentPeriod ={investmentPeriod}
           rateOfReturn ={rateOfReturn}
           rateOfInflation ={rateOfInflation}
-          handleBlur={handleBlur}
           handleChange={handleChange}
+          error={err}
           />
       </div>
 
