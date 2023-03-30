@@ -60,6 +60,7 @@ const mark2 = [{
 const Input2 = styled(MuiInput)`width: 110px;`;
 
 export default function SliderPanel(props) {
+    
     return (
         <>
             <br />

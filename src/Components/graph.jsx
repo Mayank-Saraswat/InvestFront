@@ -10,10 +10,10 @@ export default function Graph( props) {
     return (
         <>
             <div className='graphHeader'>
-                <p>After <span className="timeperiod"> <b>{props.result && props.result.investmentPeriod} years</b> </span>, you will have<br/>
-                    <span> <h2 className='totalamount'> <b> ₹ {props.result && toIndianRupees(props.result.sipGrowthResultFinal)}</b></h2> </span>
-                    That's <span> <b className='potentialcapitalgain'>₹ {props.result && toIndianRupees(props.result && props.result.potentialCapitalGain)}</b> </span> as potential capital gains <br /> on your investment of
-                    <span> <b className="monthlyinvestment">₹ {toIndianRupees(props.result && (props.result.totalMonthlyInvest))}</b>  </span>
+                <p>After <span className="timePeriod"> <b>{props.result && props.result.investmentPeriod} years</b> </span>, you will have<br/>
+                    <span> <h2 className='totalAmount'> <b> ₹ {props.result && toIndianRupees(props.result.sipGrowthResultFinal)}</b></h2> </span>
+                    That's <span> <b className='potentialCapitalGain'>₹ {props.result && toIndianRupees(props.result && props.result.potentialCapitalGain)}</b> </span> as potential capital gains <br /> on your investment of
+                    <span> <b className="monthlyInvestment">₹ {props.result && toIndianRupees(props.result.totalMonthlyInvest)}</b>  </span>
                 </p>
             </div>
 
@@ -30,7 +30,7 @@ export default function Graph( props) {
                         <Tooltip/>
                         <Line 
                             type="monotone"
-                            dataKey="value"
+                            dataKey="sipGrowth"
                             stroke="#5B1EAF"
                             r={0}
                         />

@@ -11,8 +11,7 @@ export default function SIPCalculator() {
   const [rateOfInflation, setValueRateOfInflation] = useState(2);
   const [err,setError]= useState(false);
   const [inputVal, setInputVal] = useState();
-  const [result, setResult] = useState();
-  
+  const [result, setResult] = useState({invalid: false});
 
   function changeValues(name, val) {
     switch (name) {
@@ -35,7 +34,11 @@ export default function SIPCalculator() {
   function handleChange(event, props,type)  {
     let val = event.target.value;
     setInputVal(val);
-    if (Number(val) < props.min) {
+    if(props.field=="rateOfInflation" && val==''){
+      setError({[props.field]: true});
+      changeValues(props.field, props.min);
+    }
+    else if (Number(val) < props.min) {
       setError({[props.field]: true});
       changeValues(props.field, props.min);
     }
@@ -51,7 +54,7 @@ export default function SIPCalculator() {
     }
   }
 
-  useEffect(() => {   
+  useEffect(() => { 
     axios.get('/api', {
       params: {
         monthlyInvestment: monthlyInvestment,
@@ -62,11 +65,10 @@ export default function SIPCalculator() {
     })
     .then((res) =>{
         if(res.data && res.data.status == -1){
-          setError(true);
+          setResult({invalid: true});
         }
         else{
           setResult(res.data.fresult);
-          setError(false);
           }    
       }
     )
@@ -74,7 +76,6 @@ export default function SIPCalculator() {
 
   return (
     <div className='rightMain'>
-      <br />
       <div className="calculatorText">
         <h2>SIP Calculator</h2>
         <p>It tells you how much wealth you can create by making monthly investment</p>
@@ -132,7 +133,7 @@ export default function SIPCalculator() {
       </div>
 
       <div className="rightContainer">
-      {err ? <ErrorComp  /> : <Graph result={result}/>}
+      {result.invalid ? <ErrorComp/> : <Graph result={result}/>}
       </div>
 
     </div>

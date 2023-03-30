@@ -84,18 +84,18 @@
   padding-top: 25px;
   color: #605e5e;
 }
-.rightSideBox .rightMain .rightContainer .graphHeader .totalamount {
+.rightSideBox .rightMain .rightContainer .graphHeader .totalAmount {
   color: #4B6AE2;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.rightSideBox .rightMain .rightContainer .graphHeader .timeperiod {
+.rightSideBox .rightMain .rightContainer .graphHeader .timePeriod {
   color: black;
 }
-.rightSideBox .rightMain .rightContainer .graphHeader .potentialcapitalgain {
+.rightSideBox .rightMain .rightContainer .graphHeader .potentialCapitalGain {
   color: #FFAD85;
 }
-.rightSideBox .rightMain .rightContainer .graphHeader .monthlyinvestment {
+.rightSideBox .rightMain .rightContainer .graphHeader .monthlyInvestment {
   color: #0BA77A;
 }
 .rightSideBox .rightMain .rightContainer .graphFooter {
