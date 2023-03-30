@@ -1,4 +1,4 @@
-import './App.css';
+import "../../client/src/scss/main.css"
 import Sidebar from '../../client/src/Components/sidebar';
 import SIPCalculator from '../../client/src/Components/index';
 

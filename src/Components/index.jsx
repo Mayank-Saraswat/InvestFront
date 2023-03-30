@@ -1,5 +1,6 @@
 import Graph from "../../../client/src/Components/graph";
 import SliderPanel from "./sliderPanel";
+import ErrorComp from "./errorComp";
 import { React, useState, useEffect } from "react";
 import axios from 'axios';
 
@@ -64,7 +65,8 @@ export default function SIPCalculator() {
           setError(true);
         }
         else{
-          setResult(res.data && res.data.fresult);
+          setResult(res.data.fresult);
+          setError(false);
           }    
       }
     )
@@ -130,7 +132,7 @@ export default function SIPCalculator() {
       </div>
 
       <div className="rightContainer">
-        <Graph result={result}/>
+      {err ? <ErrorComp  /> : <Graph result={result}/>}
       </div>
 
     </div>
