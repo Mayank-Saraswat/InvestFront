@@ -51,7 +51,11 @@
 .rightSideBox .rightMain .leftContainer .sliderhead {
   display: inline;
 }
+.rightSideBox .rightMain .leftContainer .sliderhead h3 {
+  display: inline;
+}
 .rightSideBox .rightMain .leftContainer .Input {
+  display: inline;
   float: right;
   margin-right: 10px;
   background-color: #ECF1FC;
@@ -61,10 +65,12 @@
   height: 4vh;
 }
 .rightSideBox .rightMain .leftContainer .error {
-  color: red;
-  text-align: right;
-  font-size: 25px;
-  margin: 3px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 15px;
+  padding-bottom: 5px;
 }
 .rightSideBox .rightMain .leftContainer .slider {
   margin-top: 25px;
