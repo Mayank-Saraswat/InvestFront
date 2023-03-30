@@ -19,18 +19,14 @@
     background-color: #F1F5FA;
     button{
       padding: 2px;
-      margin-left: 25px;
-      margin-top: 7px;
+      margin: 7px 0px 0px 25px;
       font-size: 20px;
       border-radius: 5px;
     }
     .rightMain{
         background-color: white;
         vertical-align: top;
-        margin-top: 2%;
-        margin-top: 2%;
-        margin-left: 1.5%;
-        margin-right: 1.5%;
+        margin: 2% 1.5% 0% 1.5%;
         height: 88vh;
       .calculatorText{
           margin-left: 35px;
@@ -42,17 +38,15 @@
         border-radius: 1%;
         width:44%;
         height: 73vh;
-        margin-top: 2%;
-        margin-left: 3%;
-        margin-right: 1%;
+        margin: 2% 1% 0% 3%;
         padding-left: 25px; 
-        .sliderhead{
+        .sliderHead{
           display: inline;
-          h3{
+          .h3SliderHead{
             display: inline;
           }
         }
-        .Input{
+        .input{
           display:inline;
           float:right;
           margin-right: 10px;
@@ -85,8 +79,7 @@
         padding-right: 3%;
 
         .graphHeader{
-            margin-left: 35px;
-            margin-bottom: 50px;
+            margin: 0px 0px 50px 35px;
             padding-top: 25px;
             color: #605e5e;
             

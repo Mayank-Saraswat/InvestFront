@@ -66,12 +66,12 @@ export default function SliderPanel(props) {
             <div className= "sliderPanelDiv">
                 <Box sx={{ maxWidth: 570, margin: 1 }}>
 
-                    <div className="sliderhead">
-                        <h3>{props.sliderLabel}</h3>
+                    <div className="sliderHead">
+                        <h3 className="h3SliderHead">{props.sliderLabel}</h3>
                     </div>
 
-                    <div className="Input">
-                        <Grid className="demo" container>
+                    <div className="input">
+                        <Grid container>
                             <Input2
                                 type="number"
                                 value={props.inputError[props.field]?props.inputVal: props.value}
