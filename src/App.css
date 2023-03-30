@@ -128,6 +128,14 @@ h1{
 svg, .graphFooter{
   overflow: visible;
 }
+.error{
+  color: red;
+  text-align: right;
+  padding: 2px;
+  font-size: 30px;
+  margin: 5px;
+}
+
 
 @media  (max-width: 1636px){
   .rightSideBox .rightMain .container .rightContainer{
@@ -151,6 +159,8 @@ svg, .graphFooter{
     font-size: small;
   }
 }
+
+
 
 @media (max-width: 524px) {
   .leftSideBox{

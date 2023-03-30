@@ -74,10 +74,10 @@ export default function SliderPanel(props) {
                         <Grid className="demo" container>
                             <Input2
                                 type="number"
-                                value={props.value}
+                                value={props.inputError[props.field]?props.inputVal: props.value}
                                 size="small"
-                                onBlur={(event)=>props.handleChange(event, props)}
-                                onChange={(event)=>props.handleChange(event, props)}
+                                onBlur={(event)=>props.handleChange(event, props, "blur")}
+                                onChange={(event)=>props.handleChange(event, props, "inputBox")}
                                 inputProps={{
                                     step: props.steps,
                                     min: props.min,
@@ -88,7 +88,7 @@ export default function SliderPanel(props) {
                     </div>
                     
                     <br />
-                    {props.error && props.error && <div className="error">Invalid Input</div>}
+                    {props.inputError && props.inputError[props.field] && <div className="error">Invalid Input</div>}
                     <Grid className="slider">
                         <Slider
                             defaultValue={props.value}
@@ -96,7 +96,7 @@ export default function SliderPanel(props) {
                             max={props.max}
                             step={props.steps}
                             marks={props.field === 'monthlyInvestment' ? mark1 : mark2}
-                            onChange={(event)=>props.handleChange(event, props)}
+                            onChange={(event)=>props.handleChange(event, props, "slider")}
                             valueLabelDisplay="auto"
                             value={props.value}
                         />

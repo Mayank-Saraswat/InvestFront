@@ -1,6 +1,5 @@
-import Calculator from "./calculator";
 import Graph from "../../../client/src/Components/graph";
-import ErrorComp from "../../../client/src/Components/errorComp";
+import SliderPanel from "./sliderPanel";
 import { React, useState, useEffect } from "react";
 import axios from 'axios';
 
@@ -10,8 +9,10 @@ export default function SIPCalculator() {
   const [rateOfReturn, setValueRateOfReturn] = useState(10);
   const [rateOfInflation, setValueRateOfInflation] = useState(2);
   const [err,setError]= useState(false);
+  const [inputVal, setInputVal] = useState();
   const [result, setResult] = useState();
   
+
   function changeValues(name, val) {
     switch (name) {
       case "monthlyInvestment": 
@@ -30,21 +31,22 @@ export default function SIPCalculator() {
     }
   }
 
-  function handleChange(event, props)  {
+  function handleChange(event, props,type)  {
     let val = event.target.value;
+    setInputVal(val);
     if (Number(val) < props.min) {
-      setError(true);
-      alert("Invalid Input");
+      setError({[props.field]: true});
       changeValues(props.field, props.min);
-      return;
     }
     else if (Number(val) > props.max) {
-      setError(true);
-      alert("Invalid Input");
+      setError({[props.field]: true});
       changeValues(props.field, props.max);
     }else{
+      setError({[props.field]: false});
+      changeValues(props.field, Number(val))
+    }
+    if(type=="blur"){
       setError(false);
-      changeValues(props.field, event.target.value && Number(event.target.value))
     }
   }
 
@@ -77,18 +79,58 @@ export default function SIPCalculator() {
       </div>
 
       <div className="leftContainer">
-        <Calculator
-          monthlyInvestment={monthlyInvestment}
-          investmentPeriod ={investmentPeriod}
-          rateOfReturn ={rateOfReturn}
-          rateOfInflation ={rateOfInflation}
-          handleChange={handleChange}
-          error={err}
-          />
+    
+      <SliderPanel
+        field="monthlyInvestment"
+        sliderLabel="Monthly Investment (Rs.)"
+        min={500}
+        max={1000000}
+        steps={500}
+        value={monthlyInvestment}
+        handleChange={handleChange}
+        inputError={err}
+        inputVal={inputVal}
+      />
+
+      <SliderPanel
+        field="investmentPeriod"
+        sliderLabel="Investment Period (in years)"
+        min={1}
+        max={30}
+        steps={1}
+        value={investmentPeriod}
+        handleChange={handleChange}
+        inputError={err}
+        inputVal={inputVal}
+      />
+
+      <SliderPanel
+        field="rateOfReturn"
+        sliderLabel="Expected Rate of Return(%p.a)"
+        min={1}
+        max={30}
+        steps={0.1}
+        value={rateOfReturn}
+        handleChange={handleChange}
+        inputError={err}
+        inputVal={inputVal}
+      />
+
+      <SliderPanel
+        field="rateOfInflation"
+        sliderLabel="Expected Rate of Inflation(%p.a)"
+        min={0}
+        max={30}
+        steps={0.1}
+        value={rateOfInflation}
+        handleChange={handleChange}
+        inputError={err}
+        inputVal={inputVal}
+      />
       </div>
 
       <div className="rightContainer">
-        {err ? <ErrorComp/> : <Graph result={result}/>}
+        <Graph result={result}/>
       </div>
 
     </div>
