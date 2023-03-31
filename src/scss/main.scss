@@ -1,0 +1,162 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+.leftSideBox{
+  background-color: #526FE4;
+  display: inline-block;
+  width: 12%;
+  height: 100vh;
+  color: white;
+}
+
+.rightSideBox{
+    display: inline-block;
+    width: 88%;
+    height: 100vh;
+    vertical-align: top;
+    background-color: #F1F5FA;
+    button{
+      padding: 2px;
+      margin: 7px 0px 0px 25px;
+      font-size: 20px;
+      border-radius: 5px;
+      border: none;
+    }
+    .rightMain{
+        background-color: white;
+        vertical-align: top;
+        margin: 2% 1.5% 0% 1.5%;
+        height: 88vh;
+      .calculatorText{
+          margin: 35px 10px 0px 0px;
+        }
+      
+      .leftContainer{
+        display: inline-block;
+        border:2px solid #F5F5F5;
+        border-radius: 1%;
+        width:44%;
+        height: 73vh;
+        margin: 2% 1% 0% 3%;
+        padding-left: 25px; 
+        .sliderHead{
+          display: inline;
+          .h3SliderHead{
+            display: inline;
+          }
+        }
+        .input{
+          display:inline;
+          float:right;
+          margin-right: 10px;
+          background-color: #ECF1FC;
+          border: none;
+          text-align: center;
+          width:20%;
+          height: 4vh;
+        }
+        .error{
+          background-color: red;
+          color: white;
+          text-align: center;
+          font-size: 18px;
+          margin-top: 15px;
+          padding-bottom: 5px;
+        }
+        .slider{
+          margin-top: 25px;
+        }
+      }
+      .rightContainer{
+        display: inline-block;
+        border:2px solid #F5F5F5;
+        border-radius: 1%;
+        width:43%;
+        height: 73vh;
+        margin-top: 2%;
+        vertical-align: top;
+        padding-right: 3%;
+
+        .graphHeader{
+            margin: 0px 0px 50px 35px;
+            padding-top: 25px;
+            color: #605e5e;
+            
+            .totalAmount{
+                color:#4B6AE2;
+                padding: 5px 0px 5px 0px;
+              }
+            .timePeriod{
+                color:black
+              }
+            .potentialCapitalGain{
+                color: #FFAD85;
+              }
+            .monthlyInvestment{
+                color: #0BA77A;
+              }
+              
+          }
+        .graphFooter{
+            margin-left: 35px;
+          }
+        .h1errComp{
+            color: red;
+            text-align: center;
+          }
+        .h2errComp{
+            color: green;
+            text-align: center;
+          }
+      }
+}
+}
+
+svg, .graphFooter{
+  overflow: visible;
+}
+
+@media  (max-width: 1636px){
+  .rightSideBox .rightMain .container .rightContainer{
+    display: block;
+    width: 48%;
+  }
+  .rightSideBox .rightMain .container .rightContainer, .rightSideBox .rightMain .container .leftContainer{
+    font-size: small; 
+  }
+
+  .rightSideBox .rightMain .container .leftContainer .slidersArea{
+    overflow: hidden;
+  }
+
+  .rightSideBox .rightMain .container .rightContainer .calculatorText{
+    font-size: larger;
+    padding: 20px 5px;
+  }
+
+  .calculatorText h2, p {
+    font-size: small;
+  }
+}
+
+@media (max-width: 524px) {
+  .leftSideBox{
+    display: none;
+  }
+
+  .rightSideBox{
+    width: 100%;
+  }
+ 
+  .rightSideBox .rightMain .container .rightContainer{
+    width: 88%;
+  } 
+  .rightSideBox .rightMain .container .leftContainer{
+    width: 96%;
+  }
+  .calculatorText{
+    font-size: 20px;
+  }
+}
