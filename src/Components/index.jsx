@@ -54,6 +54,12 @@ export default function SIPCalculator() {
     }
   }
 
+  // Converting amount in Lacs
+  const rupeesInLacs = (amount) => {
+    return `${amount / 100000}`;
+  };
+
+  // api calling
   useEffect(() => { 
     axios.get('/getSipCalculator', {
       params: {
@@ -134,7 +140,7 @@ export default function SIPCalculator() {
       </div>
 
       <div className="rightContainer">
-      {result && result.invalid ? <ErrorComp/> : <Graph result={result}/>}
+      {result && result.invalid ? <ErrorComp/> : <Graph result={result}  rupeesInLacs={rupeesInLacs}/>}
       </div>
 
     </div>
