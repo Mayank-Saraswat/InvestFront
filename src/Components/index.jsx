@@ -55,7 +55,7 @@ export default function SIPCalculator() {
   }
 
   useEffect(() => { 
-    axios.get('/api', {
+    axios.get('/getSipCalculator', {
       params: {
         monthlyInvestment: monthlyInvestment,
         investmentPeriod: investmentPeriod,
@@ -64,6 +64,7 @@ export default function SIPCalculator() {
       },
     })
     .then((res) =>{
+      console.log(res.data);
         if(res.data && res.data.status == -1){
           setResult({invalid: true});
         }
@@ -133,7 +134,7 @@ export default function SIPCalculator() {
       </div>
 
       <div className="rightContainer">
-      {result.invalid ? <ErrorComp/> : <Graph result={result}/>}
+      {result && result.invalid ? <ErrorComp/> : <Graph result={result}/>}
       </div>
 
     </div>
